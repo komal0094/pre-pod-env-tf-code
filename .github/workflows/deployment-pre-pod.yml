@@ -5,32 +5,32 @@ on:
 
 jobs:
   terraform:
-  runs-on: ubuntu-latest
-  env:
-      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-  steps:
-    - uses: actions/checkout@v1  
-      name: Download codebase
+    runs-on: ubuntu-latest
+    env:
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    steps:
+      - uses: actions/checkout@v1  
+        name: Download codebase
 
-    - name: install aws-cli
-      run: sudo apt install aws-cli -y
+      - name: install aws-cli
+        run: sudo apt install aws-cli -y
 
-    - name: configure AWS
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-    
-    - name: create an instance
-      run: | 
-       aws ec2 run-instances --image-id ami-0f93563a114d0bee1 --instance-type t2.micro --key-name key001 --query 'Instance[*].[InstanceId]' --output text >> instance_id.txt
+      - name: configure AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      
+      - name: create an instance
+        run: | 
+        aws ec2 run-instances --image-id ami-0f93563a114d0bee1 --instance-type t2.micro --key-name key001 --query 'Instance[*].[InstanceId]' --output text >> instance_id.txt
 
-    - name: pull artifact from s3 
-      run: aws s3 cp s3://s3newbucket7890/pro-html.zip pro-html.zip
+      - name: pull artifact from s3 
+        run: aws s3 cp s3://s3newbucket7890/pro-html.zip pro-html.zip
 
-            
+              
 
 
 

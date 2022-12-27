@@ -14,7 +14,7 @@ jobs:
         name: Download codebase
 
       - name: install aws-cli
-        run: sudo apt install aws-cli -y
+        run: sudo apt install awscli -y
 
       - name: configure AWS
         uses: aws-actions/configure-aws-credentials@v1

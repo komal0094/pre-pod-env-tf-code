@@ -45,7 +45,18 @@ jobs:
           username: ubuntu
           key: ${{ secrets.KEY }}
           source: 'pro-html.zip'
-          target: '/home/ubuntu'    
+          target: '/home/ubuntu'   
+
+      - name: run commands on a remote server
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            tar -xvf pro-html.zip
+            cd build
+            sudo cp index.php /var/www/html
+          host: 35.174.171.37
+          user: ubuntu
+          key: ${{ secrets.KEY}}     
           
 
           

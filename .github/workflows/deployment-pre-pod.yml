@@ -27,7 +27,7 @@ jobs:
       
       - name: create an instance
         run: | 
-          aws ec2 run-instances --image-id ami-0f93563a114d0bee1 --instance-type t2.micro --key-name key001 --query 'Instance[0].[InstanceId]' --output text >> instance_id.txt
+          aws ec2 run-instances --image-id ami-0f93563a114d0bee1 --instance-type t2.micro --key-name key001 --query 'Instances[0].[InstanceId]' --output text > instance_id.txt
 
           cat instance_id.txt
 
@@ -36,8 +36,9 @@ jobs:
 
       - name: store public ip of instance
         run: | 
-          aws ec2 describe-instances --instance-ids $(cat instance_id.txt) --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text >> instance_ip.txt
+          aws ec2 describe-instances --instance-ids $(cat instance_id.txt) --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text > instance_ip.txt
           
+          cat instance_ip.txt
           
 
           

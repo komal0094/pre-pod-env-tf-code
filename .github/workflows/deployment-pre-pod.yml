@@ -33,6 +33,7 @@ jobs:
       - name: store public ip of instance
         run: | 
           aws ec2 describe-instances --instance-ids $(cat instance_id.txt) --query 'Reservations[*].Instances[*].[PublicIpAddress]' --output text >> instance_ip.txt
+          
           cat instance_ip.txt
 
           

@@ -12,9 +12,6 @@ jobs:
         KEY: ${{ secrets.KEY }}
 
     steps:
-      - uses: actions/checkout@v1  
-        name: Download codebase
-
       - name: install aws-cli
         run: sudo apt install awscli -y
 
@@ -39,6 +36,16 @@ jobs:
           aws ec2 describe-instances --instance-ids $(cat instance_id.txt) --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text > instance_ip.txt
           
           cat instance_ip.txt
+
+     
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@master
+        with:
+          host: 35.174.171.37
+          username: ubuntu
+          key: ${{ secrets.KEY }}
+          source: 'pro-html.zip'
+          target: '/home/ubuntu'    
           
 
           

@@ -26,7 +26,10 @@ jobs:
     
     - name: create an instance
       run: | 
-      instance_id= $(aws ec2 run-instances --image-id ami-0f93563a114d0bee1 --instance-type t2.micro --key-name key001 --query 'Instance[*].[InstanceId]' --output text)
+      aws ec2 run-instances --image-id ami-0f93563a114d0bee1 --instance-type t2.micro --key-name key001 --query 'Instance[*].[InstanceId]' --output text >> instance_id.txt
+
+    - name: pull artifact from s3 
+      run: aws s3 cp s3://s3newbucket7890/pro-html.zip pro-html.zip
 
             
 

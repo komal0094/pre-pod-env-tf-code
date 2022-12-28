@@ -31,9 +31,6 @@ jobs:
 
           cat instance_id.txt
 
-      - name: pull artifact from s3 
-        run: aws s3 cp s3://s3newbucket7890/pro-html.zip pro-html.zip
-
       - name: store public ip of instance
         run: | 
           aws ec2 describe-instances --instance-ids $(cat instance_id.txt) --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text > instance_ip.txt
@@ -100,7 +97,7 @@ jobs:
       
       - name: update asg with new lt
         run: |
-          aws autoscaling update-auto-scaling-group --auto-scaling-group-name my-new-asg --launch-template LaunchTemplateName=my-new-temp,Version='$Latest'
+          aws autoscaling update-auto-scaling-group --auto-scaling-group-name new-asg --launch-template LaunchTemplateName=my-new-temp,Version='$Latest'
          
           
 

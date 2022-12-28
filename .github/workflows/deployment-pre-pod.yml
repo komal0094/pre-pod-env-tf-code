@@ -100,7 +100,7 @@ jobs:
       
       - name: update asg with new lt
         run: |
-          aws autoscaling update-auto-scaling-group --auto-scaling-group-name test --launch-template LaunchTemplateName=my-new-temp,Version='$Latest'
+          aws autoscaling update-auto-scaling-group --auto-scaling-group-name my-new-asg --launch-template LaunchTemplateName=my-new-temp,Version='$Latest'
          
           
 

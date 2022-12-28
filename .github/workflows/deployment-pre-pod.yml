@@ -92,7 +92,7 @@ jobs:
       
       - name: create ami of instance
         run: | 
-         aws ec2  create-image --instance-id ${{ needs.job1.outputs.output1 }} --name updated-nginx-pre --description "new AMi with updated artifacts"  --query ImageId --output text > ami_id.txt
+         aws ec2  create-image --instance-id ${{ needs.job1.outputs.output1 }} --name updated-nginx-pre-pod1 --description "new AMi with updated artifacts"  --query ImageId --output text > ami_id.txt
 
       - name: update launch-temp by new ami
         run: |

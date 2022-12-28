@@ -83,9 +83,9 @@ jobs:
         with:
           command: |
              sudo apt install unzip -y
-             unzip medi-html.zip
+             unzip pro-html.zip
              cd medi-html
-             sudo cp -R ~/medi-html/* /var/www/html/
+             sudo cp -R ~/pro-html.zip/* /var/www/html/
           host: ${{ needs.job1.outputs.output2 }}
           user: ubuntu
           key: ${{ secrets.KEY}} 

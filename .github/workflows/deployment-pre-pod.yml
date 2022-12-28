@@ -86,9 +86,9 @@ jobs:
              unzip medi-html.zip
              cd medi-html
              sudo cp -R ~/medi-html/* /var/www/html/
-           host: ${{ needs.job1.outputs.output1 }}
-           user: ubuntu
-           key: ${{ secrets.KEY}}  
+          host: ${{ needs.job1.outputs.output1 }}
+          user: ubuntu
+          key: ${{ secrets.KEY}}  
           
 
           

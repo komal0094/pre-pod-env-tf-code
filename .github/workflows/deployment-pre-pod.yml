@@ -64,7 +64,7 @@ jobs:
           aws-region: us-east-1
 
       - name: print output1
-         run: echo "${{ needs.job1.outputs.output1 }}"
+        run: echo "${{ needs.job1.outputs.output1 }}"
       
       - name: pull artifact from s3 
         run: aws s3 cp s3://s3newbucket7890/pro-html.zip pro-html.zip

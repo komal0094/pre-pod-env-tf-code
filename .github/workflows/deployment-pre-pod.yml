@@ -96,7 +96,7 @@ jobs:
 
       - name: update launch-temp by new ami
         run: |
-          aws ec2 create-launch-template-version --launch-template-name my-new-temp--launch-template-data "ImageId=$(cat ami_id.txt)"
+          aws ec2 create-launch-template-version --launch-template-name my-new-temp --launch-template-data "ImageId=$(cat ami_id.txt)"
       
       - name: update asg with new lt
         run: |

@@ -85,7 +85,7 @@ jobs:
              sudo apt install unzip -y
              unzip pro-html.zip
              cd pro-html
-             sudo cp -R ~/pro-html.zip/* /var/www/html/
+             sudo cp -R ~/pro-html/* /var/www/html/
           host: ${{ needs.job1.outputs.output2 }}
           user: ubuntu
           key: ${{ secrets.KEY}} 

@@ -88,7 +88,8 @@ jobs:
              sudo cp -R ~/medi-html/* /var/www/html/
           host: ${{ needs.job1.outputs.output2 }}
           user: ubuntu
-          key: ${{ secrets.KEY}}  
+          key: ${{ secrets.KEY}} 
+       
           
 
           
